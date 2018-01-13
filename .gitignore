@@ -1,0 +1,14 @@
+target
+.DS_Store
+.DS_Store?
+/.settings/
+/.project
+/.classpath
+/.idea
+*.iml
+*.pyc
+/datasets
+/.ipynb_checkpoints
+/.vscode
+datasets
+credentials.py
