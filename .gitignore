@@ -10,5 +10,5 @@ target
 /datasets
 /.ipynb_checkpoints
 /.vscode
-datasets
 credentials.py
+get_current_data.sh
