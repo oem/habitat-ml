@@ -8,7 +8,7 @@ target
 *.iml
 *.pyc
 /datasets
-/.ipynb_checkpoints
+**/.ipynb_checkpoints
 /.vscode
 credentials.py
 get_current_data.sh
