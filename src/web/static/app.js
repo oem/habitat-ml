@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       labels,
       datasets: [
         {
-          label: 'humidity',
+          label: 'humidity(measured)',
           backgroundColor: '#FF69B4',
           data: humidity
         }
