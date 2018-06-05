@@ -1,5 +1,5 @@
 'use strict';
-/* global Chart */
+/* global Chart moment */
 
 document.addEventListener('DOMContentLoaded', function() {
   var labels = [],
@@ -37,9 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
         callbacks: {
           label: function(tooltipItem, data) {
             var label = data.datasets[tooltipItem.datasetIndex].label || '';
+            var formattedDate = moment(labels[tooltipItem.index]).format(
+              'h:mm a'
+            );
 
-            if (label) label += ': ';
-            label += tooltipItem.yLabel;
+            label += ' ' + formattedDate + ': ';
+            label += tooltipItem.yLabel + '%';
             return label;
           }
         }
