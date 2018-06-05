@@ -6,12 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Habitat</title>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+    body,
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      padding: 12px;
+      background-color: #111;
+      color: #aaa;
+    }
+
+    h1 {
+      font-weight: 100;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Habitat</h1>
   <div data-measurements="{{measurements}}"></div>
+
+  <div style="width: 100%">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script src="/static/app.js"></script>
 </body>
 
 </html>
