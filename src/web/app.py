@@ -11,14 +11,14 @@ import os
 app = Flask(__name__)
 
 token = os.environ['API_TOKEN']
-measurements = requests.get(
-    url=f"https://habitat-lifesupport.herokuapp.com/measurements?token={token}").json()[:24][::-1]
-print(measurements)
 
 
 @app.route('/', methods=['GET'])
 def root():
     '''renders the index template with json embedded as data attribute'''
+    measurements = requests.get(
+        url=f"https://habitat-lifesupport.herokuapp.com/measurements?token={token}").json()[:24][::-1]
+    print(measurements)
     return render_template('index.html', measurements=json.dumps(measurements), predictions=[23, 24])
 
 
