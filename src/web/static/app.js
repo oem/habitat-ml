@@ -31,6 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
     },
     options: {
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+        callbacks: {
+          label: function(tooltipItem, data) {
+            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+            if (label) label += ': ';
+            label += tooltipItem.yLabel;
+            return label;
+          }
+        }
+      },
       scales: {
         xAxes: [
           { type: 'time', time: { unit: 'hour' }, gridLines: { color: '#555' } }
