@@ -9,6 +9,7 @@ cycler==0.10.0
 decorator==4.2.1
 entrypoints==0.2.3
 Flask==1.0.2
+Flask-BasicAuth==0.2.0
 gunicorn==19.8.1
 html5lib==1.0.1
 idna==2.6
