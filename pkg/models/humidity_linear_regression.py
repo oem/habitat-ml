@@ -11,7 +11,7 @@ class HumidityLinearRegression():
     test_size = 0.2
     lookback = 24
 
-    def __init__(self, df):
+    def __init__(self, df=None):
         self.df = df
 
     def train(self):

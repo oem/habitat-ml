@@ -1,12 +1,11 @@
-# load the model
-# load the data
-# calc prediction
-# serve prediction + actual values as json
-
 from flask import Flask, render_template
 import requests
 import json
 import os
+from ..models.humidity_linear_regression import HumidityLinearRegression
+model = HumidityLinearRegression()
+model.load_model(os.path.join(os.path.dirname(
+    __file__), '../../models/hum_lin_reg.pkl'))
 
 app = Flask(__name__)
 
