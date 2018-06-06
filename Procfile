@@ -1,0 +1,1 @@
+web: gunicorn pkg.web.app:app
