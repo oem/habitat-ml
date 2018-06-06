@@ -1,20 +1,15 @@
 from flask import Flask, render_template
-from flask_basicauth import BasicAuth
 import requests
 import json
 import os
 from .helpers.data_preparation import prepare_data
 
 app = Flask(__name__)
-app.config['BASIC_AUTH_USERNAME'] = os.environ['BASIC_AUTH_USERNAME']
-app.config['BASIC_AUTH_PASSWORD'] = os.environ['BASIC_AUTH_PASSWORD']
-basic_auth = BasicAuth(app)
 
 token = os.environ['API_TOKEN']
 
 
 @app.route('/', methods=['GET'])
-@basic_auth.required
 def root():
     '''renders the index template with json embedded as data attribute'''
     measurements = requests.get(
