@@ -27,11 +27,22 @@
     .chart {
       margin-bottom: 40px;
     }
+
+    .short-info {
+      text-transform: uppercase;
+    }
+
+    .highlight {
+      color: #2672EC;
+    }
   </style>
 </head>
 
 <body>
   <h1 class="headline">Habitat</h1>
+  <p class="short-info">current humidity:
+    <span class="highlight">{{current_humidity}}%</span>
+  </p>
   <div data-measurements="{{measurements}}"></div>
   <div data-predictions="{{predictions}}"></div>
   <div data-next-day="{{next_day}}"></div>

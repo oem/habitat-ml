@@ -12,11 +12,12 @@ token = os.environ['API_TOKEN']
 @app.route('/', methods=['GET'])
 def root():
     '''renders the index template with json embedded as data attribute'''
+    # this could ofc be optimized, the response is now performance-bound to another service
     measurements = requests.get(
         url=f"https://habitat-lifesupport.herokuapp.com/measurements?token={token}").json()[:72][::-1]
     last_24h, last_24h_predictions, next_24h_predictions = prepare_data(
         measurements)
-    return render_template('index.html', measurements=json.dumps(last_24h), predictions=json.dumps(last_24h_predictions), next_day=json.dumps(next_24h_predictions))
+    return render_template('index.html', measurements=json.dumps(last_24h), predictions=json.dumps(last_24h_predictions), next_day=json.dumps(next_24h_predictions), current_humidity=last_24h[-1]['humidity'])
 
 
 if __name__ == '__main__':
