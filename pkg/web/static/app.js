@@ -3,18 +3,26 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   var labels = [],
-    humidity = [];
+    humidity = [],
+    predictionLastDay = [];
 
   var ctx = document.getElementById('myChart');
-  var data = JSON.parse(
+  var measured = JSON.parse(
     document
       .querySelector('[data-measurements]')
       .getAttribute('data-measurements')
   );
 
-  for (var i = 0; i < data.length; i++) {
-    labels[i] = new Date(data[i].measuredAt);
-    humidity[i] = data[i].humidity;
+  var predictions = JSON.parse(
+    document
+      .querySelector('[data-predictions]')
+      .getAttribute('data-predictions')
+  );
+
+  for (var i = 0; i < measured.length; i++) {
+    labels[i] = new Date(measured[i].measuredAt);
+    humidity[i] = measured[i].humidity;
+    predictionLastDay[i] = predictions[i].humidity;
   }
   Chart.defaults.global.defaultFontColor = '#FFF';
 
@@ -27,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
           label: 'humidity(measured)',
           backgroundColor: '#FF69B4',
           data: humidity
+        },
+        {
+          label: 'humidity(predicted)',
+          backgroundColor: '#00ccff',
+          data: predictionLastDay
         }
       ]
     },
