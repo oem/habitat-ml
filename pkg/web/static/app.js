@@ -25,7 +25,7 @@ function extractData(attributeName) {
   );
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function buildChartConfig(labels, datasets) {
   var options = {
     tooltips: {
       mode: 'index',
@@ -54,51 +54,40 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  var labels = [],
-    humidity = [],
-    predictions = [],
-    i;
+  return {
+    type: 'bubble',
+    options: options,
+    data: {
+      labels: labels,
+      datasets: datasets
+    }
+  };
+}
 
-  var ctx = document.getElementById('myChart');
-  var measured = JSON.parse(
-    document
-      .querySelector('[data-measurements]')
-      .getAttribute('data-measurements')
-  );
-
-  var predicted = JSON.parse(
-    document
-      .querySelector('[data-predictions]')
-      .getAttribute('data-predictions')
-  );
-
-  for (i = 0; i < measured.length; i++) {
-    humidity[i] = measured[i].humidity;
-  }
-
-  for (i = 0; i < predicted.length; i++) {
-    labels[i] = new Date(predicted[i].measuredAt);
-    predictions[i] = predicted[i].humidity;
-  }
+document.addEventListener('DOMContentLoaded', function() {
   Chart.defaults.global.defaultFontColor = '#FFF';
 
-  new Chart(ctx, {
-    type: 'bubble',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'humidity(measured)',
-          backgroundColor: '#2672EC',
-          data: humidity
-        },
-        {
-          label: 'humidity(predicted)',
-          backgroundColor: '#DC572E',
-          data: predictions
-        }
-      ]
+  // chart for the previous 24h
+  var previousDayMeasured = extractData('data-measurements');
+  var previousDayPredicted = extractData('data-predictions');
+  var previousDayHumidity = buildData(previousDayMeasured, 'humidity');
+  var previousDayForeCast = buildData(previousDayPredicted, 'humidity');
+  var previousDayLabels = buildLabels(previousDayMeasured);
+
+  var previousDayChart = document.getElementById('previousDayChart');
+
+  var last24hConfig = buildChartConfig(previousDayLabels, [
+    {
+      label: 'humidity(measured)',
+      backgroundColor: '#2672EC',
+      data: previousDayHumidity
     },
-    options: options
-  });
+    {
+      label: 'humidity(predicted)',
+      backgroundColor: '#DC572E',
+      data: previousDayForeCast
+    }
+  ]);
+
+  new Chart(previousDayChart, last24hConfig);
 });
