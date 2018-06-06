@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var forecastConfig = buildChartConfig(forecastLabels, [
     {
       label: 'humidity(predicted)',
-      backgroundColor: '#FF69B4',
+      backgroundColor: '#DC572E',
       data: forecastHumidity
     }
   ]);

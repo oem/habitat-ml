@@ -15,29 +15,33 @@
       color: #aaa;
     }
 
-    h1,
-    h2 {
+    .headline,
+    .subheadline {
       font-weight: 100;
     }
 
-    h2 {
+    .subheadline {
       text-transform: uppercase;
+    }
+
+    .chart {
+      margin-bottom: 40px;
     }
   </style>
 </head>
 
 <body>
-  <h1>Habitat</h1>
+  <h1 class="headline">Habitat</h1>
   <div data-measurements="{{measurements}}"></div>
   <div data-predictions="{{predictions}}"></div>
   <div data-next-day="{{next_day}}"></div>
 
   <div style="width: 100%">
-    <h2>humidity: 24h forecast</h2>
-    <canvas id="forecastChart"></canvas>
+    <h2 class="subheadline">humidity: 24h forecast</h2>
+    <canvas id="forecastChart" class="chart"></canvas>
 
-    <h2>humidity/last 24h: measured vs 24h forecast</h2>
-    <canvas id="previousDayChart"></canvas>
+    <h2 class="subheadline">humidity/last 24h: measured vs 24h forecast</h2>
+    <canvas id="previousDayChart" class="chart"></canvas>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
