@@ -4,7 +4,7 @@
 function buildLabels(dataset) {
   var labels = [];
   for (var i = 0; i < dataset.length; i++) {
-    labels[i] = new Date(dataset[i].measuredAt);
+    labels[i] = moment(dataset[i].measuredAt);
   }
   return labels;
 }
