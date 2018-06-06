@@ -67,14 +67,29 @@ function buildChartConfig(labels, datasets) {
 document.addEventListener('DOMContentLoaded', function() {
   Chart.defaults.global.defaultFontColor = '#FFF';
 
+  // chart for the 24h forecast
+  var forecastChart = document.getElementById('forecastChart');
+  var forecastData = extractData('data-next-day');
+  var forecastHumidity = buildData(forecastData, 'humidity');
+  var forecastLabels = buildLabels(forecastData);
+  var forecastConfig = buildChartConfig(forecastLabels, [
+    {
+      label: 'humidity(predicted)',
+      backgroundColor: '#FF69B4',
+      data: forecastHumidity
+    }
+  ]);
+
+  new Chart(forecastChart, forecastConfig);
+
   // chart for the previous 24h
+  var previousDayChart = document.getElementById('previousDayChart');
+
   var previousDayMeasured = extractData('data-measurements');
   var previousDayPredicted = extractData('data-predictions');
   var previousDayHumidity = buildData(previousDayMeasured, 'humidity');
   var previousDayForeCast = buildData(previousDayPredicted, 'humidity');
   var previousDayLabels = buildLabels(previousDayMeasured);
-
-  var previousDayChart = document.getElementById('previousDayChart');
 
   var last24hConfig = buildChartConfig(previousDayLabels, [
     {
