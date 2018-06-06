@@ -15,7 +15,8 @@
       color: #aaa;
     }
 
-    h1 {
+    h1,
+    h2 {
       font-weight: 100;
     }
   </style>
@@ -25,8 +26,10 @@
   <h1>Habitat</h1>
   <div data-measurements="{{measurements}}"></div>
   <div data-predictions="{{predictions}}"></div>
+  <div data-next-day="{{next_day}}"></div>
 
   <div style="width: 100%">
+    <h2>HUMIDITY/LAST 24H: MEASURED VS PREDICTED</h2>
     <canvas id="myChart"></canvas>
   </div>
 
