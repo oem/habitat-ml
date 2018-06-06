@@ -1,1 +1,1 @@
-web: gunicorn pkg.web.app:app
+web: gunicorn --bind 0.0.0.0:${PORT} pkg.web.app:app
