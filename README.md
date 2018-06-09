@@ -15,3 +15,5 @@ That way we can for example see what effects opening the windows or using a dehu
 ## Ok, sure, but why would I care?
 
 Maybe you are planning to do a little project where you combine iot stuff with machine learning. If so, this might help you with some of the basics, like how would I serve the model and visualize it? How should I structure my code best?
+
+Also included are some notebooks, exploring the data and trying out a few models.
