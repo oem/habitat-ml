@@ -11,6 +11,10 @@ class TestHelpers(unittest.TestCase):
         self.assertEqual(type([]), type(result))
         self.assertEqual(type({}), type(result[0]))
 
+    def test_prepare_measurements_for_last_day_returns_last_24_datapoints(self):
+        result = prepare_measurements_for_last_day(self.test_df)
+        self.assertEqual(24, len(result))
+
 
 if __name__ == '__main__':
     unittest.main()
