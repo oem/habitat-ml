@@ -17,3 +17,7 @@ That way we can for example see what effects opening the windows or using a dehu
 Maybe you are planning to do a little project where you combine iot stuff with machine learning. If so, this might help you with some of the basics, like how would I serve the model and visualize it? How should I structure my code best?
 
 Also included are some notebooks, exploring the data and trying out a few models.
+
+You can check out the running webapp at https://habitat-ml.herokuapp.com
+
+The initial loading might be slow, since I am using the free dyno on heroku and it might take some time to coldstart. The actual webapp performance it pretty descent- it is not the app, I am just cheap ;)
